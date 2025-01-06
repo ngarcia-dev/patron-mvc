@@ -12,10 +12,14 @@ class Task
     $this->description = $description;
   }
 
+  protected static function getDB()
+  {
+    return Database::getInstance();
+  }
+
   public static function all()
   {
-    $db = Database::getInstance();
-    $tasks = $db->query('SELECT * FROM tasks')->fetchAll();
+    $tasks = self::getDB()->query('SELECT * FROM tasks')->fetchAll();
     return array_map(function ($task) {
       return new Task($task['id'], $task['description']);
     }, $tasks);
@@ -23,24 +27,21 @@ class Task
 
   public static function find($id)
   {
-    $db = Database::getInstance();
-    $task = $db->query("SELECT * FROM tasks WHERE id = $id")->fetch();
+    $task = self::getDB()->query("SELECT * FROM tasks WHERE id = $id")->fetch();
     return new Task($task['id'], $task['description']);
   }
 
   public function save()
   {
-    $db = Database::getInstance();
     if ($this->id) {
-      $db->query("UPDATE tasks SET description = '$this->description' WHERE id = $this->id");
+      self::getDB()->query("UPDATE tasks SET description = '$this->description' WHERE id = $this->id");
     } else {
-      $db->query("INSERT INTO tasks (description) VALUES ('$this->description')");
+      self::getDB()->query("INSERT INTO tasks (description) VALUES ('$this->description')");
     }
   }
 
   public function delete()
   {
-    $db = Database::getInstance();
-    $db->query("DELETE FROM tasks WHERE id = $this->id");
+    self::getDB()->query("DELETE FROM tasks WHERE id = $this->id");
   }
 }
