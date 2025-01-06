@@ -36,6 +36,8 @@ actualiza la vista con la información del modelo. en consecuencia el usuario ve
 // VIEW
 <a href="index.php?action=edit&id=<?php echo $task->id; ?>">Editar</a> // <--- click button
 
+```
+```php
 // FRONT CONTROLLER
 $controller = new TaskController();
 switch ($_GET['action']) {
@@ -45,6 +47,8 @@ switch ($_GET['action']) {
   // resto de casos ...
 }
 
+```
+```php
 // CONTROLLER
 class TaskController
 {
@@ -62,6 +66,8 @@ class TaskController
   // resto de metodos
 }
 
+```
+```php
 // MODEL
 class Task
 {
@@ -77,8 +83,6 @@ class Task
   }
   // resto de metodos
 }
-
-
 ```
 
 | $                                    | Beneficios de usar MVC                                                                         |
