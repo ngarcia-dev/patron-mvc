@@ -1,6 +1,6 @@
 <?php
 
-require_once '../app/Controllers/TaskController.php';
+require_once __DIR__ . '/../app/Controllers/TaskController.php';
 
 $controller = new TaskController();
 
