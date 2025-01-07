@@ -1,13 +1,13 @@
 <?php
 
-require_once 'models/Task.php';
+require_once __DIR__ . '/../Models/Task.php';
 
 class TaskController
 {
   public function index()
   {
     $tasks = Task::all();
-    require_once 'views/tasks/index.phtml';
+    require_once __DIR__ . '/../Views/tasks/index.phtml';
   }
 
   public function create()
@@ -17,7 +17,7 @@ class TaskController
       $task->save();
       header('Location: index.php');
     } else {
-      require_once 'views/tasks/task-form.phtml';
+      require_once __DIR__ . '/../Views/tasks/task-form.phtml';
     }
   }
 
@@ -29,7 +29,7 @@ class TaskController
       $task->save();
       header('Location: index.php');
     } else {
-      require_once 'views/tasks/task-form.phtml';
+      require_once __DIR__ . '/../Views/tasks/task-form.phtml';
     }
   }
 
