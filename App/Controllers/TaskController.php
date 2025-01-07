@@ -1,13 +1,15 @@
 <?php
 
-require_once 'models/Task.php';
+namespace App\Controllers;
+
+use App\Models\Task;
 
 class TaskController
 {
   public function index()
   {
     $tasks = Task::all();
-    require_once 'views/tasks/index.phtml';
+    require_once __DIR__ . '/../views/tasks/index.phtml';
   }
 
   public function create()
@@ -15,9 +17,9 @@ class TaskController
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $task = new Task(null, $_POST['description']);
       $task->save();
-      header('Location: index.php');
+      header('Location: /tasks');
     } else {
-      require_once 'views/tasks/task-form.phtml';
+      require_once __DIR__ . '/../views/tasks/task-form.phtml';
     }
   }
 
@@ -27,9 +29,9 @@ class TaskController
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $task->description = $_POST['description'];
       $task->save();
-      header('Location: index.php');
+      header('Location: /tasks');
     } else {
-      require_once 'views/tasks/task-form.phtml';
+      require_once __DIR__ . '/../views/tasks/task-form.phtml';
     }
   }
 
@@ -37,6 +39,6 @@ class TaskController
   {
     $task = Task::find($id);
     $task->delete();
-    header('Location: index.php');
+    header('Location: /tasks');
   }
 }

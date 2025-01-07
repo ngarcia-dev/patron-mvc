@@ -1,5 +1,9 @@
 <?php
 
+namespace Db;
+
+use PDO;
+
 class Database
 {
   private static $instance = null;
@@ -7,7 +11,7 @@ class Database
 
   private function __construct()
   {
-    $this->connection = new PDO('sqlite:' . __DIR__ . '/../db/tasks.db');
+    $this->connection = new PDO('sqlite:' . __DIR__ . '/../Db/tasks.db');
     $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   }
 

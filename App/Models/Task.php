@@ -1,5 +1,8 @@
 <?php
-require_once 'db/db.php';
+
+namespace App\Models;
+
+use Db\Database;
 
 class Task
 {

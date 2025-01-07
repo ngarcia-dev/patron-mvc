@@ -1,0 +1,11 @@
+<h1>Lista de tareas</h1>
+<ul>
+  <?php foreach ($tasks as $task): ?>
+    <li>
+      <?php echo $task->description; ?>
+      <a href="/tasks/edit/<?php echo $task->id; ?>">Editar</a>
+      <a href="/tasks/delete/<?php echo $task->id; ?>">Eliminar</a>
+    </li>
+  <?php endforeach; ?>
+</ul>
+<a href="/tasks/create">Crear tarea</a>
