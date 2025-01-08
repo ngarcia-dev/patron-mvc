@@ -2,28 +2,13 @@
 
 El patron de arquitectura MVC (Model, View, Controller) es una forma de organizar el código de una aplicación para que sea más facil de desarrollar, mantener, y probar. Divide la apliacación en tres partes interconectadas:
 
-| Modelo                                                                 |
-| :--------------------------------------------------------------------- |
-| Representa los datos de la aplicación y la logica de negocio.          |
-| Se encarga de acceder, gestionar y modificar los datos.                |
-| Es independiente de la forma en que se presentan los datos al usuario. |
-| `Ejemplos: una base datos, un archivo XML, una API REST.`              |
-
-| Vista                                                                                |
-| :----------------------------------------------------------------------------------- |
-| Se encarga de mostrar la información al usuario.                                     |
-| Es la interfaz de usuario de la aplicación.                                          |
-| No contiene lógica de negocio ni acceso a datos.                                     |
-| Recibe la información que debe mostrar del controlador.                              |
-| `Ejemplos: una página web, una aplicación móvil, una interfaz de línea de comandos.` |
-
-| Controlador                                                        |
-| :----------------------------------------------------------------- |
-| Actúa como intermediario entre el modelo y la vista.               |
-| Recibe las peticiones del usuario (a través de la vista).          |
-| Interactúa con el modelo para obtener o modificar los datos.       |
-| Envía la información a la vista para que la muestre al usuario.    |
-| Gestiona el flujo de la aplicación y la lógica de la presentación. |
+| Modelo                                                                 | Vista                                                                                | Controlador                                                        |
+| :--------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| Representa los datos de la aplicación y la logica de negocio.          | Se encarga de mostrar la información al usuario.                                     | Actúa como intermediario entre el modelo y la vista.               |
+| Se encarga de acceder, gestionar y modificar los datos.                | Es la interfaz de usuario de la aplicación.                                          | Recibe las peticiones del usuario (a través de la vista).          |
+| Es independiente de la forma en que se presentan los datos al usuario. | No contiene lógica de negocio ni acceso a datos.                                     | Interactúa con el modelo para obtener o modificar los datos.       |
+| `Ejemplos: una base datos, un archivo XML, una API REST.`              | Recibe la información que debe mostrar del controlador.                              | Envía la información a la vista para que la muestre al usuario.    |
+| x                                                                      | `Ejemplos: una página web, una aplicación móvil, una interfaz de línea de comandos.` | Gestiona el flujo de la aplicación y la lógica de la presentación. |
 
 ## ¿Cómo funciona MVC?
 
@@ -37,6 +22,7 @@ actualiza la vista con la información del modelo. en consecuencia el usuario ve
 <a href="index.php?action=edit&id=<?php echo $task->id; ?>">Editar</a> // <--- click button
 
 ```
+
 ```php
 // FRONT CONTROLLER
 $controller = new TaskController();
@@ -48,6 +34,7 @@ switch ($_GET['action']) {
 }
 
 ```
+
 ```php
 // CONTROLLER
 class TaskController
@@ -67,6 +54,7 @@ class TaskController
 }
 
 ```
+
 ```php
 // MODEL
 class Task
