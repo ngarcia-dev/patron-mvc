@@ -1,5 +1,8 @@
 <?php
-require_once __DIR__ . '/../../db/Database.php';
+
+namespace App\Models;
+
+use DB\Database;
 
 class Task
 {

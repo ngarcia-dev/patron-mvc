@@ -1,6 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../app/Controllers/TaskController.php';
+use App\Controllers\TaskController;
+
+require_once __DIR__ . '/../vendor/autoload.php';
 
 $controller = new TaskController();
 
