@@ -1,23 +1,17 @@
 <?php
 
-use App\Controllers\TaskController;
+use Core\Router;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
-$controller = new TaskController();
-
-if (isset($_GET['action'])) {
-  switch ($_GET['action']) {
-    case 'create':
-      $controller->create();
-      break;
-    case 'edit':
-      $controller->edit($_GET['id']);
-      break;
-    case 'delete':
-      $controller->delete($_GET['id']);
-      break;
+spl_autoload_register(function ($class) {
+  $path = "../" . str_replace("\\", "/", $class) . ".php";
+  if (file_exists($path)) {
+    require_once $path;
   }
-} else {
-  $controller->index();
-}
+});
+
+$routes = require_once '../config/routes.php';
+
+$router = new Router($routes);
+$router->handleRequest($_SERVER['REQUEST_URI']);

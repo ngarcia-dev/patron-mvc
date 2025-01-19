@@ -17,7 +17,7 @@ class TaskController
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $task = new Task(null, $_POST['description']);
       $task->save();
-      header('Location: index.php');
+      header('Location: /');
     } else {
       require_once __DIR__ . '/../Views/tasks/task-form.phtml';
     }
@@ -29,7 +29,7 @@ class TaskController
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $task->description = $_POST['description'];
       $task->save();
-      header('Location: index.php');
+      header('Location: /');
     } else {
       require_once __DIR__ . '/../Views/tasks/task-form.phtml';
     }
@@ -39,6 +39,6 @@ class TaskController
   {
     $task = Task::find($id);
     $task->delete();
-    header('Location: index.php');
+    header('Location: /');
   }
 }
