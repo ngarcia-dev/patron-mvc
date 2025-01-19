@@ -2,7 +2,7 @@
 
 use Core\Router;
 
-require_once '../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 spl_autoload_register(function ($class) {
   $path = "../" . str_replace("\\", "/", $class) . ".php";
