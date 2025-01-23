@@ -19,20 +19,19 @@ actualiza la vista con la información del modelo. en consecuencia el usuario ve
 
 ```php
 // VIEW
-<a href="index.php?action=edit&id=<?php echo $task->id; ?>">Editar</a> // <--- click button
-
+<a href="/tasks/edit/<?= $task->id; ?>">Editar</a>
 ```
 
 ```php
 // FRONT CONTROLLER
-$controller = new TaskController();
-switch ($_GET['action']) {
-  case 'edit':
-    $controller->edit($_GET['id']);
-    break;
-  // resto de casos ...
-}
-
+[
+  // ...
+  'tasks/edit/([0-9]+)' => [
+    'controller' => 'TaskController',
+    'action' => 'edit'
+  ],
+  // ...
+]
 ```
 
 ```php
@@ -45,9 +44,9 @@ class TaskController
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $task->description = $_POST['description'];
       $task->save();
-      header('Location: index.php');
+      header('Location: /');
     } else {
-      require_once 'views/tasks/task-form.phtml';
+      require_once __DIR__ . '/../Views/tasks/task-form.phtml';
     }
   }
   // resto de metodos
